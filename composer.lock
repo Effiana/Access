@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "947d78b58e27edbc3098d6d9e12db1d0",
+    "content-hash": "7e36ec3b5bddc6956eb6215e6fc9f6b7",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1166,16 +1166,16 @@
         },
         {
             "name": "effiana/migration-bundle",
-            "version": "0.10",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Effiana/MigrationBundle.git",
-                "reference": "209bca3036c4934e9b16f94d81e50d2895b131b9"
+                "reference": "b1e7173320d4cb2d3fba7613d44fe7f6ec36f163"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Effiana/MigrationBundle/zipball/209bca3036c4934e9b16f94d81e50d2895b131b9",
-                "reference": "209bca3036c4934e9b16f94d81e50d2895b131b9",
+                "url": "https://api.github.com/repos/Effiana/MigrationBundle/zipball/b1e7173320d4cb2d3fba7613d44fe7f6ec36f163",
+                "reference": "b1e7173320d4cb2d3fba7613d44fe7f6ec36f163",
                 "shasum": ""
             },
             "require": {
@@ -1221,7 +1221,7 @@
                 "migration",
                 "schema"
             ],
-            "time": "2019-07-01T08:53:34+00:00"
+            "time": "2019-08-23T11:02:16+00:00"
         },
         {
             "name": "fig/link-util",
@@ -3825,6 +3825,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "effiana/migration-bundle": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,

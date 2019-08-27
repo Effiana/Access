@@ -1,2 +1,4 @@
 services:
-  Effiana\Access\Security\AccessVoter
+  Effiana\Access\Security\AccessVoter:
+    autoconfigure: true
+    autowire: true
