@@ -1,0 +1,2 @@
+services:
+  Effiana\Access\Security\AccessVoter

@@ -34,7 +34,7 @@
     "ext-pdo": "*",
     "doctrine/data-fixtures": "^1.3",
     "doctrine/orm": "2.*",
-    "effiana/migration-bundle": "^0.10.0",
+    "effiana/migration-bundle": "dev-master",
     "knplabs/doctrine-behaviors": "^1.6",
     "symfony/symfony": "4.*"
   },
