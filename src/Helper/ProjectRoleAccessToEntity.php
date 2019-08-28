@@ -16,7 +16,6 @@ namespace Effiana\Access\Helper;
 use BrandOriented\DatabaseBundle\Entity\ProjectRoleUser;
 use Doctrine\ORM\EntityManager;
 use Effiana\Access\Entity\EffianaEntityAccess;
-use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 class ProjectRoleAccessToEntity
 {
