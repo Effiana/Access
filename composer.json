@@ -36,9 +36,25 @@
     "doctrine/orm": "2.6.*",
     "effiana/migration-bundle": "dev-master",
     "knplabs/doctrine-behaviors": "^1.6",
-    "symfony/framework-bundle": "^4.2"
+    "symfony/framework-bundle": "^4.2",
+    "symfony/security": "^4.3",
+    "symfony/security-acl": "^3.0",
+    "brandoriented/databasebundle": "dev-master",
+    "effiana/notification-bundle": "dev-master"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master"
-  }
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://gitlab+deploy-token-13:85xPWZuCGDBR4fsyWKDh@git.brandoriented.pl/effiana/workflow-bundle.git"
+    },{
+      "type": "git",
+      "url": "https://gitlab+deploy-token-16:fJ46XuHMa8J4EvFzJgKT@git.brandoriented.pl/effiana/notification-bundle.git"
+    },{
+      "type": "git",
+      "url": "https://gitlab+deploy-token-3:PExhwDkx3TAF_6xumsuh@git.brandoriented.pl/BrandOriented/DatabaseBundle.git"
+    }
+  ]
 }

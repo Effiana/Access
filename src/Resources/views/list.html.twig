@@ -1,0 +1,63 @@
+{% extends '@ManagementSystem/Layout/base.html.twig' %}
+
+{% block page_content %}
+    <section class="container-fluid" >
+        <div class="row">
+            <div class="col-xs-10">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">File Category access</h3><br />
+                        <div class="box-tools">
+                            <a class="btn btn-success" href="{{ path('file_category_access_add') }}">
+                                Add
+                            </a>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Role name</th>
+                                <th>File category</th>
+                                <th>Access</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in access %}
+                                <tr>
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.role }}</td>
+                                    <td>{{ item.entity }}</td>
+                                    <td>
+                                        {% if item.mask is not empty %}
+                                        <ul>
+                                            {% for name,allow in item.mask %}
+                                                <li>{{ name }}</li>
+                                            {% endfor %}
+
+                                            {% else %}
+                                                <span style="color:red">All access is forbidden</span>
+                                            {% endif %}
+                                        </ul>
+                                    </td>
+
+                                    <td>
+                                        <a class="btn btn-box-tool"  href="{{ path('file_category_access_edit', {
+                                            id: item.id
+                                        }) }}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
