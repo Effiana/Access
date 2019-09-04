@@ -13,7 +13,7 @@ declare(strict_types=0);
 
 namespace Effiana\Access\Form\Type;
 
-use BrandOriented\DatabaseBundle\Entity\FileCategory;
+use BrandOriented\DatabaseBundle\Entity\AttachmentCategory;
 use BrandOriented\DatabaseBundle\Entity\ProjectRole;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\ORMException;
@@ -27,7 +27,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FileCategoryAccessType extends AbstractType
+class AttachmentCategoryAccessType extends AbstractType
 {
     use MaskHelperTrait;
     /**
@@ -39,7 +39,7 @@ class FileCategoryAccessType extends AbstractType
     {
         $builder
             ->add('entityClass', HiddenType::class, [
-                'data' => FileCategory::class
+                'data' => AttachmentCategory::class
             ])
             ->add('projectRole', EntityType::class, [
                 'class' => ProjectRole::class,
@@ -61,16 +61,16 @@ class FileCategoryAccessType extends AbstractType
                 }
             ])
             ->add('entityId',EntityType::class, [
-                'class' => FileCategory::class,
+                'class' => AttachmentCategory::class,
                 'choice_label' => 'name',
                 'attr' => [
                     'readOnly' => $options['data'] instanceof EffianaEntityAccess && $options['data']->getEntityId() !== null
                 ],
                 'query_builder' => static function(EntityRepository $repository) use ($options) {
-                    $query = $repository->createQueryBuilder('fileCategory');
+                    $query = $repository->createQueryBuilder('attachmentCategory');
                     if($options['data'] instanceof EffianaEntityAccess && $options['data']->getEntityId() !== null) {
                         $query
-                            ->andWhere('fileCategory.id = :entityId')
+                            ->andWhere('attachmentCategory.id = :entityId')
                             ->setParameters([
                                 'entityId' => $options['data']->getEntityId()
                             ]);
@@ -93,7 +93,7 @@ class FileCategoryAccessType extends AbstractType
                 static function ($id) {
                     return $id;
                 },
-                static function (FileCategory $category) {
+                static function (AttachmentCategory $category) {
                     return $category->getId();
                 }
             ))

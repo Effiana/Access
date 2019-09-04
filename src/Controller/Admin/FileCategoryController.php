@@ -13,13 +13,13 @@ declare(strict_types=0);
 
 namespace Effiana\Access\Controller\Admin;
 
-use BrandOriented\DatabaseBundle\Entity\FileCategory;
+use BrandOriented\DatabaseBundle\Entity\AttachmentCategory;
 use BrandOriented\DatabaseBundle\Entity\ProjectRole;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Effiana\Access\Entity\EffianaEntityAccess;
-use Effiana\Access\Form\Type\FileCategoryAccessType;
+use Effiana\Access\Form\Type\AttachmentCategoryAccessType;
 use Effiana\Access\Helper\MaskHelperTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -30,17 +30,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * Class FileCategoryController
+ * Class AttachmentCategoryController
  * @package Effiana\Access\Controller\Admin
  *
- * @Route("/manager/access/fileCategory")
+ * @Route("/manager/access/attachmentCategory")
  */
-class FileCategoryController extends AbstractController
+class AttachmentCategoryController extends AbstractController
 {
     use MaskHelperTrait;
     /**
      * @return Response
-     * @Route("/", methods={"GET"}, name="file_category_access")
+     * @Route("/", methods={"GET"}, name="attachment_category_access")
      */
     public function index(): Response
     {
@@ -51,13 +51,13 @@ class FileCategoryController extends AbstractController
             ->select('partial access.{id, mask, entityId, projectRoleId}')
             ->andWhere('access.entityClass = :entityClass')
             ->setParameters([
-                'entityClass' => FileCategory::class
+                'entityClass' => AttachmentCategory::class
             ])->getQuery()->getArrayResult();
 
         $entityIds = array_column($access, 'entityId');
         $projectRoleIds = array_column($access, 'projectRoleId');
 
-        $entities = $em->getRepository(FileCategory::class)
+        $entities = $em->getRepository(AttachmentCategory::class)
             ->createQueryBuilder('category', 'category.id')
             ->select('partial category.{id, name}')
             ->andWhere('category.id IN (:entityIds)')
@@ -100,8 +100,8 @@ class FileCategoryController extends AbstractController
      * @return Response
      * @throws ORMException
      * @throws OptimisticLockException
-     * @Route("/add", methods={"GET", "POST"}, name="file_category_access_add")
-     * @Route("/{id}/edit", methods={"GET", "POST"}, name="file_category_access_edit")
+     * @Route("/add", methods={"GET", "POST"}, name="attachment_category_access_add")
+     * @Route("/{id}/edit", methods={"GET", "POST"}, name="attachment_category_access_edit")
      */
     public function addAction(Request $request, ?int $id): Response
     {
@@ -113,7 +113,7 @@ class FileCategoryController extends AbstractController
         }
 
         if($acl instanceof EffianaEntityAccess) {
-            $form = $this->createForm(FileCategoryAccessType::class, $acl, [
+            $form = $this->createForm(AttachmentCategoryAccessType::class, $acl, [
                 'entityManager' => $em
             ]);
             $form->handleRequest($request);
@@ -127,7 +127,7 @@ class FileCategoryController extends AbstractController
                         ->andWhere('access.entityId = :entityId')
                         ->andWhere('access.projectRoleId = :projectRoleId')
                         ->setParameters([
-                            'entityClass' => FileCategory::class,
+                            'entityClass' => AttachmentCategory::class,
                             'entityId' => $acl->getEntityId(),
                             'projectRoleId' => $acl->getProjectRole()->getId()
                         ])->getQuery()->getArrayResult();
@@ -137,12 +137,12 @@ class FileCategoryController extends AbstractController
                     $em->persist($acl);
                     $em->flush($acl);
 
-                    return new RedirectResponse($this->generateUrl('file_category_access_edit', ['id' => $acl->getId()]));
+                    return new RedirectResponse($this->generateUrl('attachment_category_access_edit', ['id' => $acl->getId()]));
                 }
 
                 $this->get('session')->getFlashBag()->add('error', 'Permissions already exist. You can change them below.');
 
-                return new RedirectResponse($this->generateUrl('file_category_access_edit', ['id' => end($used)]));
+                return new RedirectResponse($this->generateUrl('attachment_category_access_edit', ['id' => end($used)]));
             }
 
             return $this->render(
