@@ -32,19 +32,21 @@ trait MaskHelperTrait
             $pattern = str_split(str_replace(MaskBuilder::OFF, null, $pattern));
 
             foreach ($pattern as $maskMark) {
-                switch (array_flip($constants)[$maskMark]) {
-                    case 'CODE_EDIT':
-                        $mask['edit'] = true;
-                        break;
-                    case 'CODE_CREATE':
-                        $mask['create'] = true;
-                        break;
-                    case 'CODE_VIEW':
-                        $mask['view'] = true;
-                        break;
-                    case 'CODE_DELETE':
-                        $mask['delete'] = true;
-                        break;
+                if(isset(array_flip($constants)[$maskMark])) {
+                    switch (array_flip($constants)[$maskMark]) {
+                        case 'CODE_EDIT':
+                            $mask['edit'] = true;
+                            break;
+                        case 'CODE_CREATE':
+                            $mask['create'] = true;
+                            break;
+                        case 'CODE_VIEW':
+                            $mask['view'] = true;
+                            break;
+                        case 'CODE_DELETE':
+                            $mask['delete'] = true;
+                            break;
+                    }
                 }
             }
         } catch (Exception $ex) {
