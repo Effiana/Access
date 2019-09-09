@@ -30,13 +30,16 @@ class AccessType extends AbstractType
                'required' => false
            ])
            ->add('create', CheckboxType::class, [
-               'required' => false
+               'required' => false,
+               'disabled' => true
            ])
            ->add('edit', CheckboxType::class, [
-               'required' => false
+               'required' => false,
+               'disabled' => true
            ])
            ->add('delete', CheckboxType::class, [
-               'required' => false
+               'required' => false,
+               'disabled' => true
            ])
         ;
     }
