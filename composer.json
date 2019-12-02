@@ -37,8 +37,12 @@
     "effiana/migration-bundle": "dev-master",
     "knplabs/doctrine-behaviors": "^1.6",
     "symfony/framework-bundle": "^4.2 | ^5.0",
-    "symfony/security": "^4.3 | ^5.0",
-    "symfony/security-acl": "^3.0 | ^4.0 | ^5.0",
+    "symfony/security-core": "^5.0",
+    "symfony/security-http": "^5.0",
+    "symfony/security-csrf": "^5.0",
+    "symfony/security-guard": "^5.0",
+    "symfony/security-bundle": "^5.0",
+    "symfony/security-acl": "^3.0 | ^4.0 | ^5.0 | dev-master",
     "effiana/notification-bundle": "dev-master"
   },
   "require-dev": {
