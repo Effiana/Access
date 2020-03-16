@@ -14,6 +14,8 @@ declare(strict_types=0);
 namespace Effiana\Access\Entity;
 
 use BrandOriented\DatabaseBundle\Entity\ProjectRole;
+use Knp\DoctrineBehaviors\Contract\Entity\BlameableInterface;
+use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
 use Knp\DoctrineBehaviors\Model\Blameable\BlameableTrait;
 use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
@@ -25,7 +27,7 @@ use Symfony\Component\Security\Acl\Permission\MaskBuilder;
  * @Doctrine\ORM\Mapping\Table(name="effiana_entity_access")
  * @Doctrine\ORM\Mapping\Entity()
  */
-class EffianaEntityAccess
+class EffianaEntityAccess implements BlameableInterface, TimestampableInterface
 {
     use BlameableTrait;
     use TimestampableTrait;
